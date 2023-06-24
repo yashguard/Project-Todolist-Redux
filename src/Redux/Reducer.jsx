@@ -1,13 +1,13 @@
-import { AddToDo } from "./Action";
+import { Add_To_Do } from "./ActionType";
 
-let initialstate = [{ data: [] }];
+let initialstate = { data: [] };
 
 export const reducer = (state = initialstate, action) => {
   switch (action.type) {
-    case AddToDo:
+    case Add_To_Do:
       return { ...state, data: action.data };
 
     default:
-      return { state };
+      return state;
   }
 };
