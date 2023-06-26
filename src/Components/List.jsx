@@ -1,24 +1,23 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Add } from "../Redux/Action";
 
 const List = (props) => {
   let { date, TaskName, id } = props.listItems;
-  let [index,setIndex] = useState()
   const DispatchData = useDispatch();
   const GetData = () => {
-    axios.get(`http://localhost:3001/list`)
-    .then((response)=>DispatchData(Add(response.data.reverse())))
-  }
+    axios
+      .get(`http://localhost:3001/list`)
+      .then((response) => DispatchData(Add(response.data.reverse())));
+  };
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/list/${id}`)
-    GetData()
-  }
-  console.log(index)
+    axios.delete(`http://localhost:3001/list/${id}`);
+    GetData();
+  };
   useEffect(() => {
-    GetData()
-  }, [])
+    GetData();
+  }, []);
   return (
     <div>
       <div className="listBox">
@@ -32,8 +31,18 @@ const List = (props) => {
           </div>
           <div className="buttons">
             <div className="row">
-              <input id={id} type="submit" value="Delete" onClick={(e)=>handleDelete(e.target.id)} />
-              <input type="submit" value="Update" />
+              <input
+                id={id}
+                type="submit"
+                value="Delete"
+                onClick={(e) => handleDelete(e.target.id)}
+              />
+              <input
+                id={id}
+                type="submit"
+                value="Update"
+                onClick={(e) => props.update(e.target.id, date, TaskName)}
+              />
             </div>
           </div>
         </div>

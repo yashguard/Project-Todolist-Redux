@@ -100,7 +100,7 @@
   width: 70%;
 }
 
-.listBox button {
+.listBox input {
   border-radius: 10px;
   margin: 0 10px;
   padding: 10px 20px;
@@ -111,7 +111,7 @@
   cursor: pointer;
 }
 
-.listBox button:hover {
+.listBox input:hover {
   background-color: black;
   color: white;
 }

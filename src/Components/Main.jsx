@@ -8,11 +8,13 @@ const Main = () => {
   const DispatchData = useDispatch();
   let [date, setDate] = useState("");
   let [taskname, setTaskName] = useState("");
+  let [sid, setSid] = useState("");
   const GetData = () => {
     axios
       .get(`http://localhost:3001/list`)
-      .then((response) => DispatchData(Add(response.data.reverse())))
+      .then((response) => DispatchData(Add(response.data.reverse())));
   };
+  const prodata = useSelector((store) => store.data);
   const handletask = (e) => {
     e.preventDefault();
     setDate("");
@@ -22,19 +24,30 @@ const Main = () => {
     } else if (date === "") {
       alert("Please enter the date");
     } else {
-      axios.post(`http://localhost:3001/list`, {
-        date: date,
-        TaskName: taskname,
-      });
-      GetData();
-      alert("Task has been added");
+      if (sid === "" && taskname !== "" && date !== "") {
+        axios.post(`http://localhost:3001/list`, {
+          date: date,
+          TaskName: taskname,
+        });
+        alert("Task has been added");
+      } else if (sid !== "" && taskname !== "" && date !== "") {
+        axios.patch(`http://localhost:3001/list/${sid}`, {
+          date: date,
+          TaskName: taskname,
+        });
+        alert("Task has been replaced");
+      }
     }
+    GetData();
+  };
+  const handleUpdate = (id, predate, OldTaskName) => {
+    setDate(predate);
+    setTaskName(OldTaskName);
+    setSid(id);
   };
   useEffect(() => {
     GetData();
   }, []);
-
-  const prodata = useSelector((store) => store.data);
 
   return (
     <div className="main-box">
@@ -62,7 +75,7 @@ const Main = () => {
         </form>
       </div>
       {prodata.map((ele, i) => (
-        <List key={i} listItems={{...ele}}/>
+        <List key={i} listItems={{ ...ele }} update={handleUpdate} />
       ))}
     </div>
   );
