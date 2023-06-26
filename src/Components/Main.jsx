@@ -11,7 +11,7 @@ const Main = () => {
   const GetData = () => {
     axios
       .get(`http://localhost:3001/list`)
-      .then((response) => DispatchData(Add(response.data)));
+      .then((response) => DispatchData(Add(response.data.reverse())))
   };
   const handletask = (e) => {
     e.preventDefault();
@@ -62,7 +62,7 @@ const Main = () => {
         </form>
       </div>
       {prodata.map((ele, i) => (
-        <List key={i} listItems={ele} />
+        <List key={i} listItems={{...ele}}/>
       ))}
     </div>
   );
