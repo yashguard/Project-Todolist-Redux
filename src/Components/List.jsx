@@ -11,13 +11,13 @@ const List = (props) => {
       .get(`http://localhost:3001/list`)
       .then((response) => DispatchData(Add(response.data.reverse())));
   };
+  useEffect(() => {
+    GetData();
+  }, []);
   const handleDelete = (id) => {
     axios.delete(`http://localhost:3001/list/${id}`);
     GetData();
   };
-  useEffect(() => {
-    GetData();
-  }, []);
   return (
     <div>
       <div className="listBox">

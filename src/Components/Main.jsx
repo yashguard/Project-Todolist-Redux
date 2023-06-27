@@ -17,6 +17,7 @@ const Main = () => {
   const prodata = useSelector((store) => store.data);
   const handletask = (e) => {
     e.preventDefault();
+    console.log(sid)
     setDate("");
     setTaskName("");
     if (taskname === "") {
@@ -36,6 +37,7 @@ const Main = () => {
           TaskName: taskname,
         });
         alert("Task has been replaced");
+        setSid("")
       }
     }
     GetData();
