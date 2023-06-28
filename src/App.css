@@ -100,7 +100,8 @@
   width: 70%;
 }
 
-.listBox input {
+.listBox input,
+.email input {
   border-radius: 10px;
   margin: 0 10px;
   padding: 10px 20px;
@@ -111,7 +112,8 @@
   cursor: pointer;
 }
 
-.listBox input:hover {
+.listBox input:hover,
+.email input:hover {
   background-color: black;
   color: white;
 }
