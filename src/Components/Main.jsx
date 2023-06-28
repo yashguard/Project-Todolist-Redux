@@ -17,7 +17,7 @@ const Main = () => {
   const prodata = useSelector((store) => store.data);
   const handletask = (e) => {
     e.preventDefault();
-    console.log(sid)
+    console.log(sid);
     setDate("");
     setTaskName("");
     if (taskname === "") {
@@ -37,7 +37,7 @@ const Main = () => {
           TaskName: taskname,
         });
         alert("Task has been replaced");
-        setSid("")
+        setSid("");
       }
     }
     GetData();
@@ -73,7 +73,9 @@ const Main = () => {
             onChange={(e) => setDate(e.target.value)}
           />
           <br />
-          <input className="submit" type="submit" value="AddTask" />
+          <div className="row">
+            <input className="submit" type="submit" value="AddTask" />
+          </div>
         </form>
       </div>
       {prodata.map((ele, i) => (

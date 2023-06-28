@@ -22,9 +22,6 @@ const List = (props) => {
     <div>
       <div className="listBox">
         <div className="row">
-          <div className="id">
-            <h1>{id}</h1>
-          </div>
           <div className="content">
             <span>{date}</span>
             <h2>{TaskName}</h2>
