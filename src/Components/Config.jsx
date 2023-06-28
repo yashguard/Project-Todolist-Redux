@@ -21,5 +21,5 @@ export const  googleauth = () => {
 }
 
 export const SignOut = () => {
-    auth.signOut()
+    return auth.signOut()
 }

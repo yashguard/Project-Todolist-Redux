@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { Add } from "../Redux/Action";
+import { Add, AddEmail } from "../Redux/Action";
 import List from "./List";
+import { SignOut } from "./Config";
 
 const TaskBox = () => {
   const DispatchData = useDispatch();
@@ -50,6 +51,12 @@ const TaskBox = () => {
   useEffect(() => {
     GetData();
   }, []);
+  const handlesignout = () => {
+    SignOut().then(() => {
+        DispatchData(AddEmail(""))
+        alert("You are sign out")
+    })
+  }
   return (
     <div>
       <div className="box">
@@ -77,6 +84,7 @@ const TaskBox = () => {
           </div>
         </form>
       </div>
+      <button onClick={handlesignout}>Sign out</button>
       {prodata.map((ele, i) => (
         <List key={i} listItems={{ ...ele }} update={handleUpdate} />
       ))}

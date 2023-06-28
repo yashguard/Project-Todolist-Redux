@@ -1,6 +1,6 @@
 import { Add_To_Do, Add_email } from "./ActionType";
 
-let initialstate = { data: [] };
+let initialstate = { data: [],email:"" };
 
 export const reducer = (state = initialstate, action) => {
   switch (action.type) {
