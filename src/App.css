@@ -101,7 +101,8 @@
 }
 
 .listBox input,
-.email input {
+.email input,
+button {
   border-radius: 10px;
   margin: 0 10px;
   padding: 10px 20px;
@@ -113,7 +114,13 @@
 }
 
 .listBox input:hover,
-.email input:hover {
+.email input:hover,
+button:hover {
   background-color: black;
   color: white;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
 }
