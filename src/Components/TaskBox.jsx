@@ -53,10 +53,11 @@ const TaskBox = () => {
   }, []);
   const handlesignout = () => {
     SignOut().then(() => {
-        DispatchData(AddEmail(""))
-        alert("You are sign out")
-    })
-  }
+      DispatchData(AddEmail(""));
+      localStorage.setItem("Email", "")
+      alert("You are sign out");
+    });
+  };
   return (
     <div>
       <div className="box">

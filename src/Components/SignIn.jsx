@@ -6,9 +6,11 @@ import { AddEmail } from "../Redux/Action";
 const SignIn = () => {
   let DispatchEmail = useDispatch();
   const handlesignin = () => {
-    googleauth().then((userdetails) =>
-      DispatchEmail(AddEmail(userdetails._tokenResponse.email))
-    );
+    googleauth().then((userdetails) => {
+      DispatchEmail(AddEmail(userdetails._tokenResponse.email));
+      localStorage.setItem("Email", userdetails._tokenResponse.email);
+    });
+    
   };
   return (
     <center>

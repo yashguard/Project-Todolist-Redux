@@ -1,24 +1,9 @@
 {
   "list": [
     {
-      "date": "2023-06-28",
+      "date": "2023-06-29",
       "TaskName": "Task 1",
       "id": 1
-    },
-    {
-      "date": "2023-06-29",
-      "TaskName": "Task 2",
-      "id": 2
-    },
-    {
-      "date": "2023-06-30",
-      "TaskName": "Task 3",
-      "id": 3
-    },
-    {
-      "date": "2023-07-01",
-      "TaskName": "Task 4",
-      "id": 4
     }
   ]
 }
