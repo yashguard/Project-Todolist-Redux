@@ -16,7 +16,6 @@ const TaskBox = () => {
   let [newemail, setNewEmail] = useState();
   // let [sid, setSid] = useState("");
   let exisits = false;
-  let newExisits = false;
   const GetData = () => {
     axios.get(`http://localhost:3001/users`).then((response) => {
       response.data.filter((user) => {
@@ -46,7 +45,7 @@ const TaskBox = () => {
     axios.patch(`http://localhost:3001/users/${prodata[0].id}`, user);
     GetData();
   };
-  if (newemail !== undefined && !newExisits) {
+  if (newemail !== undefined) {
     let abcd = newemail
     console.log(abcd)
     axios.post(`http://localhost:3001/users`, {

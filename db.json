@@ -1,5 +1,22 @@
 {
   "users": [
-    
+    {
+      "email": "yashguard2002@gmail.com",
+      "todo": [
+        {
+          "TaskName": "Task 1",
+          "date": "2023-07-05"
+        },
+        {
+          "TaskName": "Task 2",
+          "date": "2023-07-05"
+        },
+        {
+          "TaskName": "Task 3",
+          "date": "2023-07-06"
+        }
+      ],
+      "id": 1
+    }
   ]
 }
