@@ -1,12 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SignIn from "./SignIn";
 import TaskBox from "./TaskBox";
-import { AddEmail } from "../Redux/Action";
 
 const Main = () => {
-  let proemail = useSelector((store) => store.email);
-  let localemail = localStorage.getItem("Email")
-  console.log(localemail)
+  let proemail = useSelector((store) => store.users[0].email);
+  let localemail = localStorage.getItem("Email");
   return (
     <div className="main-box">
       {localemail === "" || proemail === "" ? <SignIn /> : <TaskBox />}
