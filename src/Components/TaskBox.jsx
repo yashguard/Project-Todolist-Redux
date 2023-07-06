@@ -13,25 +13,38 @@ const TaskBox = () => {
   let [todos, setTodos] = useState();
   const prodata = useSelector((store) => store.users);
   let getEmail = localStorage.getItem("Email");
-  let [newemail, setNewEmail] = useState();
   // let [sid, setSid] = useState("");
-  let exisits = false;
+
+
+  const adduser = (email, array) => {
+    array.push({
+      email: email,
+      todo: []
+    })
+    if (array.length > 0) {
+      axios.post(`http://localhost:3001/users`, array[0]).then(() => GetData())
+    }
+  }
+
+
+  const finduser = (data) => {
+    let val = data.filter((users) => users.email === getEmail)
+    if (val.length > 0) {
+      val.map((filuser) => {
+        let user = filuser
+        DispatchData(Add(user.todo, user.id))
+        setUser(user)
+      })
+    }
+    else {
+      adduser(prodata[0].email, [])
+    }
+  }
+
   const GetData = () => {
     axios.get(`http://localhost:3001/users`).then((response) => {
-      response.data.filter((user) => {
-        if (user.email === prodata[0].email || user.email === getEmail) {
-          setUser(user);
-          DispatchData(Add(user.todo, user.id));
-          console.log("yes", getEmail);
-          exisits = true;
-        } else if (
-          (user.email !== prodata[0].email || user.email !== getEmail || user.email === undefined) &&
-          !exisits
-        ) {
-          console.log("no", getEmail);
-          setNewEmail(getEmail)
-        }
-      });
+      finduser(response.data)
+
     });
   };
   useEffect(() => {
@@ -43,16 +56,7 @@ const TaskBox = () => {
       date: date,
     });
     axios.patch(`http://localhost:3001/users/${prodata[0].id}`, user);
-    GetData();
   };
-  if (newemail !== undefined) {
-    let abcd = newemail
-    console.log(abcd)
-    axios.post(`http://localhost:3001/users`, {
-      email: abcd,
-      todo: []
-    }).then((res) => console.log(res.data))
-  }
   const handletask = (e) => {
     e.preventDefault();
     setDate("");
