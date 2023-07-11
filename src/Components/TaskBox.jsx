@@ -22,7 +22,7 @@ const TaskBox = () => {
       todo: []
     })
     if (array.length > 0) {
-      axios.post(`http://localhost:3001/users`, array[0]).then(() => GetData())
+      axios.post(`https://crazy-lingerie-bat.cyclic.app/users`, array[0]).then(() => GetData())
     }
   }
 
@@ -42,7 +42,7 @@ const TaskBox = () => {
   }
 
   const GetData = () => {
-    axios.get(`http://localhost:3001/users`).then((response) => {
+    axios.get(`https://crazy-lingerie-bat.cyclic.app/users`).then((response) => {
       finduser(response.data)
 
     });
@@ -55,7 +55,7 @@ const TaskBox = () => {
       TaskName: taskname,
       date: date,
     });
-    axios.patch(`http://localhost:3001/users/${prodata[0].id}`, user);
+    axios.patch(`https://crazy-lingerie-bat.cyclic.app/users/${prodata[0].id}`, user);
   };
   const handletask = (e) => {
     e.preventDefault();

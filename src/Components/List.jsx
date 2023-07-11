@@ -4,12 +4,12 @@ import { useSelector } from "react-redux";
 import { Add } from "../Redux/Action";
 
 const List = ({ TaskName, date }) => {
-  const GetData = () => {
-    axios.get(`http://localhost:3001/users`);
-  };
-  useEffect(() => {
-    GetData();
-  }, []);
+  // const GetData = () => {
+  //   axios.get(`https://crazy-lingerie-bat.cyclic.app/users`);
+  // };
+  // useEffect(() => {
+  //   GetData();
+  // }, []);
   // const handleDelete = (id) => {
   //   axios.delete(`http://localhost:3001/users/${id}`);
   //   GetData();
